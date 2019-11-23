@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:w3="http://www.w3.org/1999/xhtml">
+  <head th:replace="layouts::headtag-shared"></head>
+  <body>
+    <!-- SHARED Nav-Bar -->
+    <nav th:replace="layouts::navbar-shared"></nav>
+    <div class="container-fluid mt-5">
+      <div class="container">
+        <h4>Employees</h4>
+        <!-- Btn : Add Employee -->
+        <p><a class="btn btn-primary btn-md" th:href="@{/employees/new}" role="button">Add Employee &raquo;</a></p>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr th:each="aEmployee:${employeeList}">
+              <td th:text="${aEmployee.firstName}">Mark</td>
+              <td th:text="${aEmployee.lastName}">Otto</td>
+              <td th:text="${aEmployee.email}">@mdo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!---- javascript ---->
+    <div th:replace="layouts::script-shared"></div>
+  </body>
+</html>

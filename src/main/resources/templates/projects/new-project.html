@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:w3="http://www.w3.org/1999/xhtml">
+  <head th:replace="layouts::headtag-shared"></head>
+  <body>
+    <!-- SHARED Nav-Bar -->
+    <nav th:replace="layouts::navbar-shared"></nav>
+
+    <!-- FORM -->
+    <div class="container">
+      <div class="container-fluid">
+        <h1>Add New Project</h1>
+        <form action="/projects/save" th:object="${project}" method="post">
+
+          <!-- Project Name and Status/Stage -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="projectName">Project Name</label>
+              <input th:field="*{name}" id="projectName" class="form-control" placeholder="Name of Project">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="projectStage">Project Status</label>
+              <select th:field="*{stage}" id="projectStage" class="form-control">
+                <option th:value="NOTSTARTED">Not Started</option>
+                <option th:value="INPROGRESS">In Progress</option>
+                <option th:value="COMPLETED">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Text Area: Description and Button -->
+          <div class="form-row mt-2">
+            <!-- TextArea : Project Description -->
+            <div class="form-group  col-md-6">
+              <label for="projectDescription">Description</label>
+              <div>
+                <textarea th:field="*{description}" id="projectDescription" class="form-control" placeholder="Enter Project Description" rows="4">
+                </textarea>
+              </div>
+            </div>
+
+            <!-- Option : Employee Assign -->
+            <div class="form-group col-md-4">
+              <label for="projectEmployees">Assign Employee</label>
+              <select th:field="*{employees}" multiple="multiple" id="projectEmployees" class="form-control">
+                <option th:each="employee:${allEmployees}"
+                        th:value="${employee.employeeId}"
+                        th:text="${employee.firstName}">
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- Button : Create Project -->
+          <button type="submit" class="btn btn-primary btn-lg">Create Project</button>
+        </form>
+      </div>
+    </div>
+
+    <!---- javascript ---->
+    <div th:replace="layouts::script-shared"></div>
+
+  </body>
+</html>
