@@ -1,6 +1,7 @@
 package com.paomanz.pma.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -89,5 +90,17 @@ public class Project {
 
    public void setEmployees(List<Employee> employees) {
       this.employees = employees;
+   }
+
+
+   // Convenience Method :
+   /* Method for manually assigning employee to project(Many to Many)
+   *  to Seed Method (Commandline Runner)
+   * */
+   public void addEmployee(Employee employee) {
+      if (employees == null) {
+         employees = new ArrayList<>();
+      }
+      employees.add(employee);
    }
 }
