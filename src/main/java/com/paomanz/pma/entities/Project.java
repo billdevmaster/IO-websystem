@@ -14,15 +14,16 @@ import java.util.List;
 @Entity
 public class Project {
    /* @GeneratedValue Annotation from Hibernate:
-    *  -  Helps to MAP Java Objects to
-    *     our DB Tables
-    *  @Id Annotation from Java Persistence
-    *  -  Generates the unique Identifier (projectId)
-    *     for each project.
+    * -  Helps to MAP Java Objects to our DB Tables
+    * -  IDENTITY will automatically generate a Unique id.
+    *    Hibernate will rely on an Auto-Incremented db column
+    *    to generate the primary key.
+    *
+    * @Id Annotation from Java Persistence
     * */
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private long projectId;
 
    private String name;
