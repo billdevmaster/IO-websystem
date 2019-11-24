@@ -28,14 +28,15 @@ public class Project {
    private String stage;   // Project status - NOT-STARTED, IN PROGRESS, COMPLETED, etc..
    private String description;
 
-   /* Creates One-to-Many relationship
-    *  - employeeId as ForeignKey
-    *  - Use FK to have 1 project -> many employee
-    *  - mappedBy argument refers to the property name
-    *    in the Employee table. setting many employee
-    *    can work on one/same project.
+   /* Creates Many-to-Many relationship
+    * -  @JoinTable join both tables Project and Employee.
+    *    The columns inside them will hae project_id and employee_id
     * */
-   @OneToMany(mappedBy = "project")
+   @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+           fetch = FetchType.LAZY)
+   @JoinTable(name = "project_employee",
+           joinColumns = @JoinColumn(name = "project_id"),
+           inverseJoinColumns = @JoinColumn(name = "employee_id"))
    private List<Employee> employees;
 
    // CONSTRUCTORS:

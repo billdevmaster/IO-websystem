@@ -55,17 +55,10 @@ public class ProjectController {
    *  'Assign Employees' that has their Id
    * */
    @PostMapping("/save")
-   public String createProject(Project project, @RequestParam List<Long> employees , Model model) {
+   public String createProject(Project project, Model model) {
 
       // Save Project to the DB...
       projectRepository.save(project);
-
-      // Update the Employee table, setting the project associated with the selected Employees
-      Iterable<Employee> selectedEmployees = employeeRepository.findAllById(employees);
-      for (Employee emp : selectedEmployees) {
-         emp.setProject(project);         // Employee table updated with the associated ProjectID
-         employeeRepository.save(emp);    // Save the updated table to DB.
-      }
 
       return "redirect:/projects/new";    // Use redirect to prevent duplicate submissions
    }
