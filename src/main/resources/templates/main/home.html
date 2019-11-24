@@ -6,7 +6,7 @@
     <nav th:replace="layouts::navbar-shared"></nav>
 
     <!-- MAIN -->
-    <main role="main">
+    <main role="main" class="mb-5">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
@@ -17,55 +17,73 @@
         </div>
       </div>
 
-      <!-- PIE CHART -->
       <div class="container">
-        <div class="col-md-4">
-          <canvas id="myPieChart" height="50" width="50">
+        <h3>Dashboard</h3>
+        <hr/>
+        <h4>Current Projects</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <table class="table table-bordered table-striped mt-3">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Project Name</th>
+                  <th scope="col">Project Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="aProject : ${projectList}">
+                  <td th:text="${aProject.name}"></td>
+                  <td th:text="${aProject.stage}"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          </canvas>
+          <!-- PIE CHART -->
+          <div class="col-md-4 offset-md-2">
+            <canvas id="myPieChart" height="50" width="50">
+            </canvas>
+          </div>
         </div>
       </div>
 
-
-<!--
-      <div class="container">
-        &lt;!&ndash; Example row of columns &ndash;&gt;
+      <div class="container mt-5">
+        <hr/>
+        <h4>Employees</h4>
         <div class="row">
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-              malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <div class="col-md-6">
+            <table class="table table-bordered table-striped mt-3">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="aEmployee:${employeeList}">
+                  <td th:text="${aEmployee.firstName}">Mark</td>
+                  <td th:text="${aEmployee.lastName}">Otto</td>
+                  <td th:text="${aEmployee.email}">@mdo</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
-              malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-        </div>  &lt;!&ndash;END /row&ndash;&gt;
-        <hr>
-      </div> &lt;!&ndash;END /container &ndash;&gt;
--->
+        </div>
+      </div>
 
     </main><!--END /main-->
 
+    <hr/>
     <footer class="container">
       <p>&copy; Project IO 2019 - 2020</p>
     </footer>
 
 
     <!---- javascript ---->
-    <script type="text/javascript" th:src="@{/js/myChart.js}"></script>
-
     <!-- bootstrap js-boilerplate -->
     <div th:replace="layouts::script-shared"></div>
 
+    <script th:src="@{/js/myChart.js}"></script>
   </body>
 </html>
