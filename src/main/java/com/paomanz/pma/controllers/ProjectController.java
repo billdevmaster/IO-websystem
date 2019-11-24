@@ -17,7 +17,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
-
    /*
     * @Autowire enables us to use the methods inherited from 'CrudRepository',
     * by automatically create a reference of the Interface (autowiring)
@@ -50,10 +49,7 @@ public class ProjectController {
       return "projects/new-project";   // points to the file
    }
 
-   /* @RequestParam will include
-   *  the Employees parameter from the selected
-   *  'Assign Employees' that has their Id
-   * */
+
    @PostMapping("/save")
    public String createProject(Project project, Model model) {
 
