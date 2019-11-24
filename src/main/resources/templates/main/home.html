@@ -11,14 +11,25 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Project IO</h1>
+          <h1 class="display-3 title-heading">Project IO</h1>
           <p>This is a project management application to help you manage your tasks and track their progress.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
+      <!-- PIE CHART -->
       <div class="container">
-        <!-- Example row of columns -->
+        <div class="col-md-4">
+          <canvas id="myPieChart" height="50" width="50">
+
+          </canvas>
+        </div>
+      </div>
+
+
+<!--
+      <div class="container">
+        &lt;!&ndash; Example row of columns &ndash;&gt;
         <div class="row">
           <div class="col-md-4">
             <h2>Heading</h2>
@@ -38,16 +49,22 @@
               condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
-        </div>  <!--END /row-->
+        </div>  &lt;!&ndash;END /row&ndash;&gt;
         <hr>
-      </div> <!--END /container -->
+      </div> &lt;!&ndash;END /container &ndash;&gt;
+-->
+
     </main><!--END /main-->
 
     <footer class="container">
       <p>&copy; Project IO 2019 - 2020</p>
     </footer>
 
+
     <!---- javascript ---->
+    <script type="text/javascript" th:src="@{/js/myChart.js}"></script>
+
+    <!-- bootstrap js-boilerplate -->
     <div th:replace="layouts::script-shared"></div>
 
   </body>
