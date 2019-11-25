@@ -2,6 +2,7 @@ package com.paomanz.pma.controllers;
 
 import com.paomanz.pma.dao.IEmployeeRepository;
 import com.paomanz.pma.dao.IProjectRepository;
+import com.paomanz.pma.dto.IEmployeeProject;
 import com.paomanz.pma.entities.Employee;
 import com.paomanz.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class HomeController {
       model.addAttribute("projectList", projects);
 
       // query data for Employees
-      List<Employee> employees = employeeRepository.findAll();
-      model.addAttribute("employeeList", employees);
+      List<IEmployeeProject> employeesProjectCount = employeeRepository.employeeProjects();
+      model.addAttribute("employeeListProjectCount", employeesProjectCount);
 
       return "main/home";
    }

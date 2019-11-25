@@ -57,14 +57,14 @@
                 <tr>
                   <th scope="col">First Name</th>
                   <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
+                  <th scope="col">Project Count</th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="aEmployee:${employeeList}">
-                  <td th:text="${aEmployee.firstName}">Mark</td>
-                  <td th:text="${aEmployee.lastName}">Otto</td>
-                  <td th:text="${aEmployee.email}">@mdo</td>
+                <tr th:each="aEmployeeProjectCount:${employeeListProjectCount}">
+                  <td th:text="${aEmployeeProjectCount.firstName}"></td>
+                  <td th:text="${aEmployeeProjectCount.lastName}"></td>
+                  <td th:text="${aEmployeeProjectCount.projectCount}"></td>
                 </tr>
               </tbody>
             </table>
