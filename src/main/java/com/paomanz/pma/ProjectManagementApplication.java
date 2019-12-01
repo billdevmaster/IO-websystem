@@ -16,11 +16,6 @@ import java.util.Arrays;
 @SpringBootApplication
 public class ProjectManagementApplication {
 
-   @Autowired
-   IEmployeeRepository employeeRepository;
-   @Autowired
-   IProjectRepository projectRepository;
-
    public static void main(String[] args) {
       SpringApplication.run(ProjectManagementApplication.class, args);
    }

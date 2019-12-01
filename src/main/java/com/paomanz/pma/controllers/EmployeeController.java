@@ -2,7 +2,6 @@ package com.paomanz.pma.controllers;
 
 import com.paomanz.pma.dao.IEmployeeRepository;
 import com.paomanz.pma.entities.Employee;
-import com.paomanz.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +15,18 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
+   /* Field injection style(Not Recommended) -> Constructor Injection
+    * @Autowired
+    * IEmployeeRepository employeeRepository;
+    */
+
+   private final IEmployeeRepository employeeRepository;
+
+   // Constructor Injection
    @Autowired
-   IEmployeeRepository employeeRepository;
+   public EmployeeController(IEmployeeRepository employeeRepository) {
+      this.employeeRepository = employeeRepository;
+   }
 
    // GET: Display List of Employees
    @GetMapping

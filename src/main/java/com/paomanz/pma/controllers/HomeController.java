@@ -22,10 +22,22 @@ import java.util.Map;
 @RequestMapping("/")
 public class HomeController {
 
+   /* Field injection style(Not Recommended) -> Constructor Injection
+    * @Autowired
+    * IProjectRepository projectRepository;
+    * @Autowired
+    * IEmployeeRepository employeeRepository;
+    */
+
+   private final IProjectRepository projectRepository;
+   private final IEmployeeRepository employeeRepository;
+
+   // Constructor Injection
    @Autowired
-   IProjectRepository projectRepository;
-   @Autowired
-   IEmployeeRepository employeeRepository;
+   public HomeController(IProjectRepository projectRepository, IEmployeeRepository employeeRepository) {
+      this.projectRepository = projectRepository;
+      this.employeeRepository = employeeRepository;
+   }
 
    @GetMapping
    public String displayHome(Model model) throws JsonProcessingException {
@@ -40,7 +52,7 @@ public class HomeController {
 
       //--- Custom query for project data
       List<IChartData> projectData = projectRepository.getProjectStatus();
-            // Convert projectData object into a json structure for use in javascript(ChartsJs)
+      // Convert projectData object into a json structure for use in javascript(ChartsJs)
       ObjectMapper objectMapper = new ObjectMapper();
       String jsonString = objectMapper.writeValueAsString(projectData);
 

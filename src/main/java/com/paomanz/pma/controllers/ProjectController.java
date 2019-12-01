@@ -17,15 +17,28 @@ import java.util.List;
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
-   /*
+   /**
     * @Autowire enables us to use the methods inherited from 'CrudRepository',
     * by automatically create a reference of the Interface (autowiring)
     * without using a constructor of this class, and this interface as its property.
-    * */
+    */
+
+   /* Field injection style(Not Recommended) -> Constructor Injection
+    * @Autowired
+    * IProjectRepository projectRepository;
+    * @Autowired
+    * IEmployeeRepository employeeRepository;
+    */
+
+   private final IProjectRepository projectRepository;
+   private final IEmployeeRepository employeeRepository;
+
+   // Constructor Injection
    @Autowired
-   IProjectRepository projectRepository;
-   @Autowired
-   IEmployeeRepository employeeRepository;
+   public ProjectController(IProjectRepository projectRepository, IEmployeeRepository employeeRepository) {
+      this.projectRepository = projectRepository;
+      this.employeeRepository = employeeRepository;
+   }
 
    // GET: Display List of Projects
    @GetMapping
