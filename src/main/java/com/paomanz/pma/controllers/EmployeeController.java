@@ -39,7 +39,7 @@ public class EmployeeController {
    }
 
    @GetMapping("/new")
-   public String displayEmpoyeeForm(Model model) {
+   public String displayEmployeeForm(Model model) {
       Employee aEmployee = new Employee();
       model.addAttribute("employee", aEmployee);
 
