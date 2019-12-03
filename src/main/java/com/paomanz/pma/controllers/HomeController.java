@@ -23,10 +23,10 @@ import java.util.Map;
 public class HomeController {
 
    /* Field injection style(Not Recommended) -> Constructor Injection
-    * @Autowired
-    * IProjectRepository projectRepository;
-    * @Autowired
-    * IEmployeeRepository employeeRepository;
+    *    @Autowired
+    *    IProjectRepository projectRepository;
+    *    @Autowired
+    *    IEmployeeRepository employeeRepository;
     */
 
    private final IProjectRepository projectRepository;
