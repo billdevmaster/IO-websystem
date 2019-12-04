@@ -14,7 +14,7 @@ public interface IProjectRepository extends CrudRepository<Project, Long> {
    @Override
    List<Project> findAll();
 
-   @Query(nativeQuery = true, value = "SELECT stage AS label, COUNT(*) AS value, " +
+   @Query(nativeQuery = true, value = "SELECT stage AS label, COUNT(*) AS value " +
            "FROM project " +
            "GROUP BY stage")
    public List<IChartData> getProjectStatus();

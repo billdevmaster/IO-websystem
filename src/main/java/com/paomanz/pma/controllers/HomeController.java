@@ -33,9 +33,7 @@ public class HomeController {
    private final IProjectRepository projectRepository;
    private final IEmployeeRepository employeeRepository;
 
-   /**
-    * Constructor Injection
-    */
+   /** Constructor Injection */
    @Autowired
    public HomeController(IProjectRepository projectRepository, IEmployeeRepository employeeRepository) {
       this.projectRepository = projectRepository;
@@ -55,7 +53,6 @@ public class HomeController {
 
 
       //---- Pie Chart ----/
-/*
       //--- Custom query for project data
       List<IChartData> projectData = projectRepository.getProjectStatus();
       // Convert projectData object into a json structure for use in javascript(ChartsJs)
@@ -64,7 +61,6 @@ public class HomeController {
       // [ ["NOTSTARTED", 1], ["INPROGRESS", 2], ["COMPLETED", 1] ]
 
       model.addAttribute("projectStatusCount", jsonString);
-*/
 
 
       //---- Employees ----/

@@ -16,19 +16,18 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-   // Field injection style(Not Recommended) -> Constructor Injection
+   /*
+     // Field injection style(Not Recommended) -> Constructor Injection
+      @Autowired
+      IEmployeeRepository employeeRepository;
+   */
+   private final IEmployeeRepository employeeRepository;
+
+   /** Constructor Injection */
    @Autowired
-   IEmployeeRepository employeeRepository;
-
-   // private final IEmployeeRepository employeeRepository;
-
-   /**
-    * Constructor Injection
-    */
-  /* @Autowired
    public EmployeeController(IEmployeeRepository employeeRepository) {
       this.employeeRepository = employeeRepository;
-   }*/
+   }
 
    // GET: Display List of Employees
    @GetMapping
@@ -53,6 +52,6 @@ public class EmployeeController {
       // save New Employee to DB
       employeeRepository.save(employee);
 
-      return "redirect:/employees/new";   // This is pointing to the URL
+      return "redirect:/employees";   // This is pointing to the URL
    }
 }
