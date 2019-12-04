@@ -8,6 +8,7 @@ import com.paomanz.pma.dto.IChartData;
 import com.paomanz.pma.dto.IEmployeeProject;
 import com.paomanz.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+
+   @Value("${version}")
+   private String ver;
 
 /*
    // Field injection style(Not Recommended) -> Constructor Injection
@@ -42,7 +46,8 @@ public class HomeController {
 
    @GetMapping
    public String displayHome(Model model) throws JsonProcessingException {
-
+      // Add 'ver' for Version # to model
+      model.addAttribute("versionNumber", ver);
       // Use for converting Chart Data into JSON
       Map<String, Object> map = new HashMap<>();
 
