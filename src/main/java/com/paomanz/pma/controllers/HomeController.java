@@ -22,17 +22,20 @@ import java.util.Map;
 @RequestMapping("/")
 public class HomeController {
 
-   /* Field injection style(Not Recommended) -> Constructor Injection
-    *    @Autowired
-    *    IProjectRepository projectRepository;
-    *    @Autowired
-    *    IEmployeeRepository employeeRepository;
-    */
+/*
+   // Field injection style(Not Recommended) -> Constructor Injection
+   @Autowired
+   IProjectRepository projectRepository;
+   @Autowired
+   IEmployeeRepository employeeRepository;
+*/
 
    private final IProjectRepository projectRepository;
    private final IEmployeeRepository employeeRepository;
 
-   /** Constructor Injection */
+   /**
+    * Constructor Injection
+    */
    @Autowired
    public HomeController(IProjectRepository projectRepository, IEmployeeRepository employeeRepository) {
       this.projectRepository = projectRepository;
@@ -45,20 +48,26 @@ public class HomeController {
       // Use for converting Chart Data into JSON
       Map<String, Object> map = new HashMap<>();
 
+      //---- Projects ----/
       //--- query data for Projects
       List<Project> projects = projectRepository.findAll();
       model.addAttribute("projectList", projects);
 
 
+      //---- Pie Chart ----/
+/*
       //--- Custom query for project data
       List<IChartData> projectData = projectRepository.getProjectStatus();
       // Convert projectData object into a json structure for use in javascript(ChartsJs)
       ObjectMapper objectMapper = new ObjectMapper();
       String jsonString = objectMapper.writeValueAsString(projectData);
+      // [ ["NOTSTARTED", 1], ["INPROGRESS", 2], ["COMPLETED", 1] ]
 
       model.addAttribute("projectStatusCount", jsonString);
+*/
 
 
+      //---- Employees ----/
       //--- query data for Employees
       List<IEmployeeProject> employeesProjectCount = employeeRepository.employeeProjects();
       model.addAttribute("employeeListProjectCount", employeesProjectCount);

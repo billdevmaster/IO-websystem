@@ -23,7 +23,9 @@ public class Project {
     * */
 
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")    // SEQUENCE is the fastest
+   @SequenceGenerator(name = "project_seq", sequenceName = "project_seq",
+           allocationSize = 1,initialValue=1)
    private long projectId;
 
    private String name;
@@ -96,8 +98,8 @@ public class Project {
 
    // Convenience Method :
    /* Method for manually assigning employee to project(Many to Many)
-   *  to Seed Method (Commandline Runner)
-   * */
+    *  to Seed Method (Commandline Runner)
+    * */
    public void addEmployee(Employee employee) {
       if (employees == null) {
          employees = new ArrayList<>();

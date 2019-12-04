@@ -24,23 +24,26 @@ public class ProjectController {
     * without using a constructor of this class, and this interface as its property.
     */
 
-   /* Field injection style(Not Recommended) -> Constructor Injection
-    * @Autowired
-    * IProjectRepository projectRepository;
-    * @Autowired
-    * IEmployeeRepository employeeRepository;
-    */
+   //Field injection style(Not Recommended) -> Constructor Injection
+   @Autowired
+   IProjectRepository projectRepository;
+   @Autowired
+   IEmployeeRepository employeeRepository;
 
-   private final IProjectRepository projectRepository;
+  /* private final IProjectRepository projectRepository;
    private final IEmployeeRepository employeeRepository;
 
-   /** Constructor Injection */
+   */
+
+   /**
+    * Constructor Injection
+    *//*
    @Autowired
    public ProjectController(IProjectRepository projectRepository, IEmployeeRepository employeeRepository) {
       this.projectRepository = projectRepository;
       this.employeeRepository = employeeRepository;
    }
-
+*/
    // GET: Display List of Projects
    @GetMapping
    public String displayProjects(Model model) {

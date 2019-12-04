@@ -16,18 +16,19 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-   /* Field injection style(Not Recommended) -> Constructor Injection
-    * @Autowired
-    * IEmployeeRepository employeeRepository;
-    */
-
-   private final IEmployeeRepository employeeRepository;
-
-   /** Constructor Injection */
+   // Field injection style(Not Recommended) -> Constructor Injection
    @Autowired
+   IEmployeeRepository employeeRepository;
+
+   // private final IEmployeeRepository employeeRepository;
+
+   /**
+    * Constructor Injection
+    */
+  /* @Autowired
    public EmployeeController(IEmployeeRepository employeeRepository) {
       this.employeeRepository = employeeRepository;
-   }
+   }*/
 
    // GET: Display List of Employees
    @GetMapping
